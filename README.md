@@ -4,6 +4,8 @@
 
 A simple Todo App built using **Node.js**, **Express**, **EJS**, and **MongoDB**.
 
+https://github.com/Caden0002/NUSBackendTodoExpress
+
 ---
 
 ## 🚀 Features

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link href="/bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div
+      class="container d-flex justify-content-center align-items-center vh-100"
+    >
+      <div class="col-md-5 p-4 border rounded shadow bg-light">
+        <h2 class="text-center mb-3">Login</h2>
+
+        <!-- Display error message if login fails -->
+        <% if (errorMessage) { %>
+        <div class="alert alert-danger text-center"><%= errorMessage %></div>
+        <% } %>
+
+        <form action="/dologin" method="POST">
+          <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" name="username" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input
+              type="password"
+              name="password"
+              class="form-control"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
+
+        <!-- User Credentials Info -->
+        <div class="mt-4 p-3 bg-white border rounded">
+          <h5 class="text-center">Test Credentials</h5>
+          <ul class="list-unstyled">
+            <li>
+              <strong>Username:</strong> User1 |
+              <strong>Password:</strong> User1
+            </li>
+            <li>
+              <strong>Username:</strong> User2 |
+              <strong>Password:</strong> User2
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
