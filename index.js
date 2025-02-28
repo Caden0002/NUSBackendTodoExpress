@@ -21,12 +21,10 @@ app.use(
     })
 );
 
-// ✅ Login Page
 app.get("/login", (req, res) => {
     res.render("login", { errorMessage: null });
 });
 
-// ✅ Handle Login
 app.post("/dologin", async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -43,14 +41,12 @@ app.post("/dologin", async (req, res) => {
     }
 });
 
-// ✅ Logout
 app.get("/logout", (req, res) => {
     req.session.destroy(() => {
         res.redirect("/login");
     });
 });
 
-// ✅ Middleware to Require Login
 function requireAuth(req, res, next) {
     if (!req.session.userId) {
         return res.redirect("/login");
@@ -58,7 +54,6 @@ function requireAuth(req, res, next) {
     next();
 }
 
-// ✅ Apply Authentication Middleware for Todo Routes
 app.use("/", requireAuth, todoRoutes);
 
 app.listen(port, () => {
