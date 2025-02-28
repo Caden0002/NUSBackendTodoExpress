@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+    <link href="/bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <!-- Header Title -->
+      <h1>Todo App</h1>
+
+      <!-- Add Todo Form -->
+      <form action="/addtodo" method="POST" class="mb-4">
+        <textarea
+          name="text"
+          class="form-control"
+          rows="3"
+          placeholder="Enter a new todo"
+          required
+        ></textarea>
+        <div class="text-end mt-2">
+          <button type="submit" class="btn btn-primary">Add Todo</button>
+        </div>
+      </form>
+
+      <!-- Completed Todos -->
+      <h3>Completed Todos</h3>
+      <table class="table table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th class="col-9">Task</th>
+            <th class="col-3 text-end">Actions</th>
+            <!-- Move header text to the right -->
+          </tr>
+        </thead>
+        <tbody>
+          <% completedTodos.forEach(todo => { %>
+          <tr>
+            <td class="col-9"><%= todo.text %></td>
+            <td class="col-3 text-end">
+              <form
+                action="/markuncompleted/<%= todo._id %>"
+                method="POST"
+                class="d-inline"
+              >
+                <button type="submit" class="btn btn-warning btn-sm">
+                  Mark Uncompleted
+                </button>
+              </form>
+              <form
+                action="/removetodo/<%= todo._id %>"
+                method="POST"
+                class="d-inline"
+              >
+                <button type="submit" class="btn btn-danger btn-sm">
+                  Delete
+                </button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+
+      <!-- Uncompleted Todos -->
+      <h3 class="mt-4">Uncompleted Todos</h3>
+      <table class="table table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th class="col-9">Task</th>
+            <th class="col-3 text-end">Actions</th>
+            <!-- Move header text to the right -->
+          </tr>
+        </thead>
+        <tbody>
+          <% uncompletedTodos.forEach(todo => { %>
+          <tr>
+            <td class="col-9"><%= todo.text %></td>
+            <td class="col-3 text-end">
+              <form
+                action="/markcompleted/<%= todo._id %>"
+                method="POST"
+                class="d-inline"
+              >
+                <button type="submit" class="btn btn-primary btn-sm">
+                  Mark Completed
+                </button>
+              </form>
+              <form
+                action="/removetodo/<%= todo._id %>"
+                method="POST"
+                class="d-inline"
+              >
+                <button type="submit" class="btn btn-danger btn-sm">
+                  Delete
+                </button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
