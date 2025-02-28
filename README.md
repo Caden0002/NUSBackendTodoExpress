@@ -216,14 +216,3 @@ npm run dev
 ```
 
 ---
-
-## 📝 **License**
-
-This project is licensed under the **MIT License**.
-
----
-
-## 👨‍💻 **Contributors**
-
-- **Chen Qixuan**
-- **NUS Foundation in Backend Development (Feb 2025)**
